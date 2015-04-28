@@ -1,6 +1,12 @@
-var express = require('express'), morgan = require('morgan'), compress = require('compression'),
-    bodyParser = require('body-parser'), methodOverride = require('method-override'),
-    lessMiddleware = require('less-middleware')('./public');
+var
+  config = require('./config'),
+  express = require('express'),
+  morgan = require('morgan'),
+  compress = require('compression'),
+  bodyParser = require('body-parser'),
+  methodOverride = require('method-override'),
+  lessMiddleware = require('less-middleware')('./public'),
+  session = require('express-session');
 
 module.exports = function () {
 
@@ -28,6 +34,13 @@ module.exports = function () {
   //setup your view engine her
   app.set('views', './app/views');
   app.set('view engine', 'ejs');
+
+  //Add the session configuration settings here
+  app.use(session({
+    saveUninitialized: true,
+    resave: true,
+    secret: config.sessionSecret
+  }));
 
   //setup your routes here
   app.use(express.static('./public'));
