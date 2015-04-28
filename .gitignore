@@ -49,6 +49,3 @@ atlassian-ide-plugin.xml
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
-
-#We don't want to save any css file as well.
-*.css
