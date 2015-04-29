@@ -12,15 +12,15 @@ module.exports = function () {
 
   var app = express();
 
-  console.info("Application started at : ", new Date());
+  console.log('Express configuration is loaded');
 
   if (process.env.NODE_ENV === 'development') {
-    console.info('Running application in "DEVELOPMENT" mode');
+    console.info('Running express application in "DEVELOPMENT" mode');
     app.use(morgan('dev'));
     app.use(lessMiddleware);
   } else if (process.env.NODE_ENV === 'production') {
     app.use(compress());
-    console.info('Running application in "PRODUCTION" mode');
+    console.info('Running express application in "PRODUCTION" mode');
   }
 
   app.use(bodyParser.urlencoded({
@@ -45,6 +45,9 @@ module.exports = function () {
   //setup your routes here
   app.use(express.static('./public'));
   require('../app/routes/index.server.routes.js')(app);
+  require('../app/routes/users.server.routes.js')(app);
+
+  console.info("Express application started at : ", new Date());
 
   return app;
 };

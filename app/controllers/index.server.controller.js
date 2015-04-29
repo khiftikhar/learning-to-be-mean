@@ -8,7 +8,6 @@ exports.render = function (req, res) {
   };
 
   if (req.session.lastVisited) {
-    console.log('Last visited:, ', req.session.lastVisited);
     response.lastVisited = req.session.lastVisited;
   } else {
     response.lastVisited = 'Welcome, Are you ready to be a MEAN developer?.'
