@@ -1,13 +1,13 @@
-var mongoose = require('mongoose'), Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 //Define a schema
 var UserSchema = new Schema({
-  userName: String,
-  password: String,
+  firstName: String,
+  lastName: String,
   email: String,
-  name : String
+  username: String,
+  password: String
 });
-
-//Define the model
 mongoose.model('User', UserSchema);
 console.log('Model "User" is defined');

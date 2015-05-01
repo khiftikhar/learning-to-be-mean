@@ -5,7 +5,6 @@ module.exports = function () {
   //Register user model
   require('../app/models/user.server.model');
   console.log('User model is registered');
-
   console.log('Mongoose configuration loaded');
   return db;
 };
