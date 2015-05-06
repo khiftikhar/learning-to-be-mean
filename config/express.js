@@ -1,18 +1,20 @@
 var
-  config = require('./config'),
-  express = require('express'),
-  morgan = require('morgan'),
-  compress = require('compression'),
-  bodyParser = require('body-parser'),
-  methodOverride = require('method-override'),
-  lessMiddleware = require('less-middleware')('./public'),
-  session = require('express-session');
+    config = require('./config'),
+    express = require('express'),
+    morgan = require('morgan'),
+    compress = require('compression'),
+    bodyParser = require('body-parser'),
+    methodOverride = require('method-override'),
+    lessMiddleware = require('less-middleware')('./public'),
+    session = require('express-session'),
+    favicon = require('serve-favicon');
 
 module.exports = function () {
 
   var app = express();
 
   console.log('Express configuration is loaded');
+  app.use(favicon(__dirname + './../public/img/favicons/favicon.ico'));
 
   if (process.env.NODE_ENV === 'development') {
     console.info('Running express application in "DEVELOPMENT" mode');
